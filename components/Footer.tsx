@@ -3,6 +3,32 @@ import React from 'react';
 import { PERSONAL_INFO } from '../constants';
 
 const Footer: React.FC = () => {
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSendMessage = () => {
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('请填写完整信息');
+      return;
+    }
+
+    const subject = `来自简历的留言 - ${formData.name}`;
+    const body = `姓名: ${formData.name}%0D%0A邮箱: ${formData.email}%0D%0A%0D%0A留言内容:%0D%0A${formData.message}`;
+
+    window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
+  };
+
   return (
     <footer id="contact" className="bg-slate-900 text-white py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -13,6 +39,9 @@ const Footer: React.FC = () => {
               我随时欢迎新的合作机会或关于技术的深度探讨。
             </p>
             <div className="space-y-4">
+              <a href={`tel:${PERSONAL_INFO.phone}`} className="flex items-center gap-4 text-2xl font-medium hover:text-indigo-400 transition-colors">
+                <i className="fa-solid fa-phone"></i> {PERSONAL_INFO.phone} <span className="text-sm bg-slate-800 px-2 py-1 rounded text-slate-400">(微信同号)</span>
+              </a>
               <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-4 text-2xl font-medium hover:text-indigo-400 transition-colors">
                 <i className="fa-solid fa-envelope"></i> {PERSONAL_INFO.email}
               </a>
@@ -20,26 +49,47 @@ const Footer: React.FC = () => {
                 <a href={`https://${PERSONAL_INFO.github}`} target="_blank" className="w-12 h-12 rounded-full border border-slate-700 flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all text-xl">
                   <i className="fa-brands fa-github"></i>
                 </a>
-                <a href={`https://${PERSONAL_INFO.linkedin}`} target="_blank" className="w-12 h-12 rounded-full border border-slate-700 flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all text-xl">
-                  <i className="fa-brands fa-linkedin"></i>
-                </a>
               </div>
             </div>
           </div>
           <div className="bg-slate-800 rounded-3xl p-8 space-y-6">
             <div className="space-y-2">
               <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">您的姓名</label>
-              <input type="text" className="w-full bg-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 ring-indigo-500" placeholder="王小明" />
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full bg-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 ring-indigo-500"
+                placeholder="王小明"
+              />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">您的邮箱</label>
-              <input type="email" className="w-full bg-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 ring-indigo-500" placeholder="ming@example.com" />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full bg-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 ring-indigo-500"
+                placeholder="ming@example.com"
+              />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">留言内容</label>
-              <textarea rows={4} className="w-full bg-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 ring-indigo-500" placeholder="请描述您的合作需求或咨询内容..."></textarea>
+              <textarea
+                rows={4}
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                className="w-full bg-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 ring-indigo-500"
+                placeholder="请描述您的合作需求或咨询内容..."
+              ></textarea>
             </div>
-            <button className="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-900/50">
+            <button
+              onClick={handleSendMessage}
+              className="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-900/50"
+            >
               发送留言
             </button>
           </div>

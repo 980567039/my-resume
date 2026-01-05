@@ -13,21 +13,27 @@ const ProjectsSection: React.FC = () => {
 
         <div className="space-y-12">
           {PROJECTS.map((project: EnhancedProject, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col lg:flex-row hover:shadow-2xl hover:shadow-indigo-100 transition-all duration-500"
             >
               {/* 项目图片/视觉呈现 */}
               <div className="lg:w-2/5 relative h-64 lg:h-auto overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <img
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                 <div className="absolute top-6 left-6">
-                  <span className="bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold text-indigo-600 shadow-sm">
-                    内部系统
+                  <span className={`backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold shadow-sm ${project.projectType === 'Personal'
+                    ? 'bg-indigo-600/90 text-white'
+                    : project.projectType === 'Commercial'
+                      ? 'bg-emerald-500/90 text-white'
+                      : 'bg-white/90 text-indigo-600'
+                    }`}>
+                    {project.projectType === 'Personal' ? '个人项目' :
+                      project.projectType === 'Commercial' ? '商业项目' : '内部系统'}
                   </span>
                 </div>
               </div>
@@ -39,6 +45,19 @@ const ProjectsSection: React.FC = () => {
                   <p className="text-slate-600 text-lg leading-relaxed">
                     {project.description}
                   </p>
+                  {project.link && (
+                    <div className="mt-4">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-indigo-600 font-bold hover:text-indigo-800 transition-colors group/link"
+                      >
+                        访问在线站点
+                        <i className="fa-solid fa-arrow-up-right-from-square text-sm group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* 技术亮点 - 内部项目的核心展示区 */}
@@ -59,8 +78,8 @@ const ProjectsSection: React.FC = () => {
                 {/* 底部技术标签 */}
                 <div className="mt-auto pt-6 border-t border-slate-50 flex flex-wrap gap-3">
                   {project.tags.map((tag, tIndex) => (
-                    <span 
-                      key={tIndex} 
+                    <span
+                      key={tIndex}
                       className="bg-indigo-50 text-indigo-700 text-xs font-bold px-4 py-2 rounded-xl"
                     >
                       {tag}
@@ -71,7 +90,7 @@ const ProjectsSection: React.FC = () => {
             </div>
           ))}
         </div>
-        
+
         {/* 底部提示 */}
         <div className="mt-16 text-center">
           <p className="text-slate-400 font-medium">

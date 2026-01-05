@@ -15,14 +15,14 @@ const Hero: React.FC = () => {
             欢迎来到我的数字世界
           </h2>
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight">
-            打造 <span className="gradient-text">高可用</span> <br />
-            全栈解决方案。
+            打造 <span className="gradient-text">极致</span> <br />
+            前端交互体验。
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0">
             {PERSONAL_INFO.bio}
           </p>
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
-            <button 
+            <button
               onClick={handleDownloadPDF}
               className="bg-slate-900 text-white px-10 py-4 rounded-2xl font-bold hover:scale-105 active:scale-95 transition-all flex items-center gap-2 shadow-xl shadow-slate-200"
             >
@@ -35,9 +35,9 @@ const Hero: React.FC = () => {
         </div>
         <div className="flex-1 relative">
           <div className="relative z-10 w-full max-w-md mx-auto aspect-square rounded-3xl overflow-hidden shadow-2xl animate-float">
-            <img 
-              src="https://picsum.photos/seed/dev-portrait/600/600" 
-              alt="开发者头像" 
+            <img
+              src="https://picsum.photos/seed/dev-portrait/600/600"
+              alt="开发者头像"
               className="w-full h-full object-cover"
             />
           </div>

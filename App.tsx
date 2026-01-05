@@ -15,16 +15,16 @@ function App() {
       <main>
         <Hero />
         <AboutDetail />
-        
+
         {/* 数据统计部分 */}
         <section className="bg-slate-50 py-10">
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-indigo-600 mb-2">6+</div>
+              <div className="text-4xl font-bold text-indigo-600 mb-2">9+</div>
               <div className="text-slate-500 text-sm font-bold uppercase tracking-widest">年实战经验</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-indigo-600 mb-2">50+</div>
+              <div className="text-4xl font-bold text-indigo-600 mb-2">20+</div>
               <div className="text-slate-500 text-sm font-bold uppercase tracking-widest">交付项目</div>
             </div>
             <div className="text-center">
@@ -40,7 +40,7 @@ function App() {
 
         <SkillsSection />
         <ProjectsSection />
-        
+
         {/* 工作流程部分 */}
         <section className="py-20 bg-indigo-600 text-white overflow-hidden relative">
           <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
@@ -72,14 +72,14 @@ function App() {
             </div>
             <div className="flex-1 relative group">
               <div className="glass border-white/30 p-4 rounded-3xl rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                <img 
-                  src="https://picsum.photos/seed/code/600/400" 
-                  alt="工作流程" 
+                <img
+                  src="https://picsum.photos/seed/code/600/400"
+                  alt="工作流程"
                   className="rounded-2xl w-full shadow-2xl"
                 />
               </div>
               <div className="absolute -bottom-10 -right-10 bg-pink-500 p-6 rounded-2xl shadow-xl hidden lg:block -rotate-6 animate-pulse">
-                <p className="font-bold text-white">Top 1% 全栈人才</p>
+                <p className="font-bold text-white">保持学习，保持创新</p>
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@ function App() {
         </section>
       </main>
       <Footer />
-      <ChatAssistant />
+      {/* <ChatAssistant /> */}
     </div>
   );
 }

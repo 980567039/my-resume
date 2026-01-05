@@ -7,7 +7,8 @@ const SkillsSection: React.FC = () => {
     'Frontend': '前端开发',
     'Backend': '后端开发',
     'DevOps': '运维部署',
-    'Mobile': '移动端/小程序'
+    'Mobile': '移动端/小程序',
+    'Crawler': '爬虫开发'
   };
 
   return (
@@ -20,8 +21,8 @@ const SkillsSection: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {SKILLS.map((skill, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="p-6 rounded-3xl border border-slate-100 hover:border-indigo-100 hover:shadow-xl hover:shadow-indigo-50 transition-all group"
             >
               <div className="flex items-center justify-between mb-4">
@@ -32,8 +33,8 @@ const SkillsSection: React.FC = () => {
               </div>
               <h3 className="text-xl font-bold mb-4">{skill.name}</h3>
               <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-indigo-600 rounded-full" 
+                <div
+                  className="h-full bg-indigo-600 rounded-full"
                   style={{ width: `${skill.proficiency}%` }}
                 ></div>
               </div>
