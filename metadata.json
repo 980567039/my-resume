@@ -1,0 +1,5 @@
+{
+  "name": "Full-Stack Portfolio Explorer",
+  "description": "A high-performance, aesthetically pleasing resume website built with Next.js, featuring an AI-powered portfolio assistant powered by Gemini.",
+  "requestFramePermissions": []
+}
